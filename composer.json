@@ -1,0 +1,73 @@
+{
+  "name": "parabellumkoval/backpack-analytics",
+  "description": "Implement Analytics API & MYSQL for backpack",
+  "keywords": [
+    "parabellumKoval",
+    "backpack",
+    "laravel",
+    "Google Analytics"
+  ],
+  "homepage": "https://github.com/parabellumkoval/backpack-analytics",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "parabellumKoval",
+      "email": "parabellum.koval@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "spatie/laravel-analytics": "^5.0"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.0",
+    "nunomaduro/collision": "^6.0",
+    "nunomaduro/larastan": "^2.0.1",
+    "orchestra/testbench": "^7.0",
+    "pestphp/pest": "^1.21",
+    "pestphp/pest-plugin-laravel": "^1.1",
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.0",
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+        "Backpack\\Analytics\\": "src",
+        "Backpack\\Analytics\\Database\\Factories\\": "database/factories"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+        "Backpack\\Analytics\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+      "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+      "analyse": "vendor/bin/phpstan analyse",
+      "test": "vendor/bin/pest",
+      "test-coverage": "vendor/bin/pest --coverage",
+      "format": "vendor/bin/pint"
+  },
+  "config": {
+      "sort-packages": true,
+      "allow-plugins": {
+          "pestphp/pest-plugin": true,
+          "phpstan/extension-installer": true
+      }
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+            "Backpack\\Analytics\\ServiceProvider"
+          ],
+          "aliases": {
+            "Product": "Backpack\\Analytics\\Facades\\Analytics"
+          }
+      }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
